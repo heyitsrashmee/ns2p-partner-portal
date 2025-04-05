@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NimbleS2P Partner Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f6f8;
+      color: #1f2937;
+    }
+    header {
+      background-color: #3b0a75;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav {
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.5rem; /* wider spacing between buttons */
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  font-family: 'Poppins', sans-serif;
+}
+
+nav button {
+  background: none;
+  border: none;
+  font-weight: 500;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  color: #374151;
+  font-family: 'Poppins', sans-serif;
+}
+
+nav button.active,
+nav button:hover {
+  background-color: #3b0a75;
+  color: white;
+  box-shadow: 0 3px 6px rgba(59, 10, 117, 0.25);
+}
+
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #111827;
+      text-align: center;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    }
+
+    .card h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .card p {
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background-color: #fff;
+    }
+    textarea {
+      resize: vertical;
+    }
+    .btn {
+      background-color: #3b0a75;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #57289e;
+    }
+    a.logout {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    a.logout:hover {
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>NimbleS2P Partner Portal</strong></div>
+    <div style="position: relative;">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <div style="
+          background-color: #5e2ca5;
+          padding: 0.4rem 1rem;
+          border-radius: 999px;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-weight: 600;
+          font-size: 0.95rem;
+          color: white;">
+          <span>👤</span>
+          <span>Partner ID: PARTNER123</span>
+        </div>
+        <span style="font-size: 1.2rem; cursor: pointer;" onclick="toggleDropdown()">👤</span>
+        <span style="font-size: 1.2rem; cursor: pointer;" onclick="toggleDropdown()">▾</span>
+      </div>
+    
+      <div id="user-dropdown" style="
+        display: none;
+        position: absolute;
+        right: 0;
+        margin-top: 0.5rem;
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        padding: 0.5rem 1rem;
+        z-index: 10;
+      ">
+        <a href="logout.html" onclick="logout()" style="
+          text-decoration: none;
+          color: #3b0a75;
+          font-weight: 500;
+          display: block;
+          padding: 0.3rem 0;
+        ">Logout</a>
+      </div>
+    </div>
+    
+    
+  </header>
+  <nav id="nav">
+    <button class="active" onclick="showTab('sales')">Sales Repository</button>
+    <button onclick="showTab('training')">Training & Resources</button>
+    <button onclick="showTab('lead')">Register a Lead</button>
+    <button onclick="showTab('pricing')">Pricing & Ordering</button>
+    <button onclick="showTab('accounts')">Accounts Management</button>
+    <button onclick="showTab('support')">Contact & Support</button>
+    <button onclick="showTab('policies')">Partner Policies</button>
+  </nav>
+  <div class="container" id="content"></div>
+
+  <script>
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "https://www.nimbles2p.com";
+    }
+
+    const content = document.getElementById('content');
+    const templates = {
+
+      sales: `<div class="card-grid">
+  <a href="qualification.html" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Qualification Criteria</h3><p>Checklist to ensure deal fit and readiness</p></div>
+  </a>
+  <a href="roi.html" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>ROI Calculation</h3><p>Spreadsheet to measure customer ROI with NimbleS2P</p></div>
+  </a>
+  <a href="objections.html" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Objection Handling</h3><p>Effective responses to common client concerns</p></div>
+  </a>
+  <a href="security.html" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Security Assessment</h3><p>Security documentation</p></div>
+  </a>
+  <a href="brochures.html" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Brochures</h3><p>Marketing collaterals to share with prospects</p></div>
+  </a>
+  <a href="datasheets.html" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Data Sheets</h3><p>Detailed specs and platform features</p></div>
+  </a>
+  <a href="proposal.html" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Proposal Template</h3><p>Editable proposal format for clients</p></div>
+  </a>
+  <a href="mail-template.html" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Mail Template</h3><p>Ready-to-use email for outreach</p></div>
+  </a>
+  <a href="competition.html" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Competition Analysis</h3><p>Key differentiators against competitors</p></div>
+  </a>
+</div>`,
+
+training: `
+  <style>
+    .accordion-container {
+      max-width: 1000px;
+      margin: auto;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .accordion-item {
+      background: #ffffff;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    .accordion-btn {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      text-align: left;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: white;
+      background-color: #3b0a75;
+      border: none;
+      border-radius: 10px 10px 0 0;
+      cursor: default;
+    }
+
+    .accordion-content {
+      padding: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #f9fafb;
+      color: #6b7280;
+    }
+  </style>
+
+  <div class="accordion-container">
+
+    <div class="accordion-item">
+      <button class="accordion-btn" style="font-family: 'Poppins', sans-serif;">Understanding Basics</button>
+      <div class="accordion-content">
+        <table>
+          <thead>
+            <tr><th>Topic</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Procure-to-Pay (P2P)</td><td>End-to-end procurement process from requisitioning goods/services to final payment to suppliers.</td></tr>
+            <tr><td>Vendor Compliance</td><td>Ensuring vendors meet required standards including tax, legal, and regulatory obligations.</td></tr>
+            <tr><td>Purchase Requisition</td><td>Internal document created to request the procurement of goods or services.</td></tr>
+            <tr><td>Purchase Order (PO)</td><td>Official document issued to vendors specifying product/service details, quantities, and prices.</td></tr>
+            <tr><td>Goods Receipt Note (GRN)</td><td>Confirmation document acknowledging delivery of goods by the supplier.</td></tr>
+            <tr><td>Invoice Matching</td><td>Three-way matching between PO, GRN, and supplier invoice to validate and approve payments.</td></tr>
+            <tr><td>e-Invoicing</td><td>Electronic submission and validation of invoices in compliance with tax authority norms.</td></tr>
+            <tr><td>Audit Trail</td><td>A secure and traceable log of all procurement transactions and changes made in the system.</td></tr>
+            <tr><td>TDS/GST Compliance</td><td>Tax deductions and Goods & Services Tax processes that vendors must adhere to in India.</td></tr>
+            <tr><td>Supplier Onboarding</td><td>Process of registering, verifying, and approving new vendors to start transactions.</td></tr>
+            <tr><td>Vendor Portal</td><td>A self-service portal where suppliers can update their data, submit invoices, and track statuses.</td></tr>
+            <tr><td>Regulatory Compliance</td><td>Ensuring adherence to laws and regulations like GST, MSME, and PAN documentation in vendor transactions.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn" style="font-family: 'Poppins', sans-serif;">Product Deep Dive</button>
+      <div class="accordion-content">
+        <table>
+          <thead>
+            <tr><th>Topic</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Compliance Portal</td><td>A centralized system to collect, validate, and manage all vendor statutory documents (PAN, GST, MSME, CIN, etc.). Features include automated expiry alerts, maker-checker approval workflows, bulk uploads, audit-ready logs, and real-time validations via government APIs. Seamlessly integrates with ERPs and ensures vendors meet all regulatory obligations across geographies.</td></tr>
+            <tr><td>Vendor Due Diligence</td><td>A comprehensive engine to onboard and verify vendors before enabling transactions. Covers PAN/GST/BANK verification, blacklist/watchlist screening (RBI, MCA, SEBI, global sanctions), MCA data pulls, due diligence questionnaires, and smart risk scoring. Enables bulk onboarding, highlights high-risk vendors, and provides a complete audit trail of onboarding and verification activities.</td></tr>
+            <tr><td>Supplier Portal</td><td>A mobile-friendly self-service portal for vendors to manage their profiles, upload documents, and track onboarding, invoice, and payment statuses. Offers secure uploads, in-app query resolution, automated alerts, real-time status updates, and role-based access. Fully customizable with enterprise branding and audit history logs.</td></tr>
+            <tr><td>Invoice Processing Automation</td><td>Digitizes the end-to-end invoice lifecycle using OCR for invoice capture, 3-way PO-GRN matching, automated validation, approval routing, and ERP posting. Supports GST/TDS logic, duplicate detection, exception handling, and real-time status tracking. Ensures faster processing, compliance, and complete auditability.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn" style="font-family: 'Poppins', sans-serif;">Industry Wise</button>
+      <div class="accordion-content">
+        <table>
+          <thead>
+            <tr><th>Topic</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Manufacturing</td><td>Highly dependent on a large, diverse supplier base with varying compliance maturity. Issues include inconsistent vendor master data, managing compliance across multiple plants, high volume of GST/TDS validations, and delays in invoice approvals due to manual processes. Vendor onboarding is often reactive and documentation is scattered. Bulk processing and strict audit trails are essential.</td></tr>
+            <tr><td>FMCG (Fast-Moving Consumer Goods)</td><td>Operates in a fast-paced environment with high vendor turnover and tight delivery timelines. Frequent issues with incomplete vendor onboarding, poor compliance visibility across geographies, and duplicate vendor entries. Payment delays and invoice mismatches due to non-standard formats are common. Automation and real-time tracking are crucial for efficiency.</td></tr>
+            <tr><td>Pharmaceuticals</td><td>Regulatory compliance is non-negotiable. Requires strict validation of vendor licenses (drug manufacturing, GST, MSME), real-time tracking of document expiries, and secure handling of vendor master data. High risk of blacklisted vendors due to global regulatory constraints. Audits are frequent, and every step in onboarding and invoice processing must be traceable.</td></tr>
+            <tr><td>Retail & E-commerce</td><td>High volume of small and seasonal vendors. Frequent challenges include managing a decentralized supplier base, handling inconsistent document submissions, and reconciling invoices quickly. Returns and cancellations complicate invoice matching. Requires scalable onboarding workflows, tax-compliant invoicing, and strong vendor communication tools.</td></tr>
+            <tr><td>Oil, Power and Gas</td><td>Vendors must meet environmental, safety, and statutory requirements. Complex documentation for subcontractors, permits, and certifications. High risk if compliance lapses—especially in hazardous zones. Delays in onboarding can stall multimillion-dollar projects. Due diligence, document control, and milestone-based invoice approvals are vital.</td></tr>
+            <tr><td>Construction & Real Estate</td><td>Often works with contractors, vendors, and consultants simultaneously. Challenges include managing GST compliance for labor contractors, collecting hard-to-trace physical documents, and ensuring licenses are valid per site. Projects are location-bound, so workflows must be adaptable. Strong audit trail and configurable workflows are essential.</td></tr>
+            <tr><td>Heavy Metal & Mining</td><td>Works with vendors in remote/rural areas with low digital maturity. Compliance with mining, labor, and environmental laws is critical. Manual documentation is still common, making onboarding and due diligence slower. Tools for real-time field data capture, document scanning, and GST reconciliation are game changers.</td></tr>
+            <tr><td>Automotive</td><td>Tiered vendor ecosystem (OEMs, Tier 1, Tier 2, etc.) with just-in-time (JIT) procurement dependency. Common challenges include poor visibility into supplier compliance, complex PO structures, and high volume of GRNs and invoices. Systemic risk in non-compliant vendors disrupting the supply chain. Emphasis on automation and master data deduplication.</td></tr>
+            <tr><td>Energy & Infrastructure</td><td>Complex vendor ecosystems involving subcontractors, consultants, and government-registered vendors. Issues with document overload, project-specific vendor compliance, and verifying licenses/certifications. Payments are milestone-driven, making invoice processing workflow-heavy. High need for custom approval flows and localized compliance checks.</td></tr>
+            <tr><td>Retail (Offline)</td><td>Store-level vendor onboarding is fragmented. GST compliance, petty cash purchases, and non-standardized documentation formats are recurring challenges. Requires centralized vendor control and automated validations to maintain consistency across locations. Portal-based onboarding and AI-driven data standardization improve efficiency.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-btn" style="font-family: 'Poppins', sans-serif;">Thought Leadership</button>
+      <div class="accordion-content">
+        <table>
+          <thead>
+            <tr><th>Topic</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Why Procure-to-Pay Automation is No Longer Optional</td><td>Enterprises are under pressure to reduce costs, eliminate fraud, and speed up procurement cycles. Manual P2P processes are error-prone, slow, and non-compliant. Automation ensures visibility, control, and scalability—making it a strategic enabler.</td></tr>
+            <tr><td>The Growing Importance of Vendor Compliance</td><td>Regulators are tightening norms across industries. From GST to MSME reporting, enterprises must ensure vendors are compliant or risk penalties. Compliance-first vendor management is now a boardroom priority.</td></tr>
+            <tr><td>Digital Procurement Transformation in India</td><td>As UPI, GSTN, MCA APIs mature, India is uniquely positioned for digitized procurement. Enterprises that adopt platforms like NimbleS2P gain competitive advantage in speed, transparency, and governance.</td></tr>
+            <tr><td>Shared Services & GBS Models Are Scaling with Automation</td><td>Global Business Services (GBS) teams are being tasked with more geographies and functions. Tools like NimbleS2P reduce manual load, improve SLAs, and bring vendor consistency across the organization.</td></tr>
+            <tr><td>Why ESG & Sustainability Starts with Vendors</td><td>ESG reporting now requires vendor-level traceability. Whether it’s carbon footprint, diversity, or ethical sourcing, your supplier base is central. NimbleS2P enables ESG compliance by design.</td></tr>
+            <tr><td>The Rise of Audit-Ready Procurement</td><td>Enterprises want to be audit-ready 365 days a year—not just during audit season. With full trails of every vendor interaction, NimbleS2P helps teams stay compliant, traceable, and transparent.</td></tr>
+            <tr><td>Vendor Risk is Business Risk</td><td>From fraud to supply chain disruption, vendor-related risks are real. Proactively managing vendor data, documents, and due diligence is no longer a compliance function—it’s risk management.</td></tr>
+            <tr><td>Standalone Platforms vs ERP Add-ons</td><td>While ERPs manage transactions, platforms like NimbleS2P manage compliance, onboarding, and documentation with agility and depth. Enterprises are now adopting best-of-breed tools to augment ERP gaps.</td></tr>
+            <tr><td>AI, APIs & Automation: The Future of Procurement</td><td>The next wave in procurement is AI-led document parsing, API-driven validation, and zero-touch onboarding. NimbleS2P’s product vision is aligned with this future.</td></tr>
+            <tr><td>From Vendor Management to Vendor Experience</td><td>Smart enterprises are rethinking how they treat vendors—not just as suppliers, but as partners. NimbleS2P helps companies offer visibility, responsiveness, and clarity—enhancing vendor trust and performance.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+`,
+
+lead: `<div class="card" style="text-align:left; margin:auto; max-width: 700px;">
+  <div class="form-grid">
+    <input type="text" placeholder="Company Name *" />
+    <input type="text" placeholder="Contact Name *" />
+    <input type="email" placeholder="Email *" />
+    <input type="text" placeholder="Phone Number" />
+    <select><option>Select industry</option></select>
+    <select>
+      <option>Choose Module</option>
+      <option>Compliance Portal</option>
+      <option>Vendor Due Diligence</option>
+      <option>Supplier Portal</option>
+      <option>Invoice Processing</option>
+    </select>
+  </div>
+  <textarea rows="4" placeholder="Additional Notes" style="margin-top: 1rem;"></textarea>
+  <button class="btn">Register Lead</button>
+</div>`,
+
+      pricing: `<div class="card-grid">
+  <a href="https://example.com/module-pricing" target="_blank" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Module Pricing</h3><p>View pricing for all NimbleS2P modules and packages</p></div>
+  </a>
+  <a href="https://example.com/order-form" target="_blank" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Place Order</h3><p>Place new orders for your clients</p></div>
+  </a>
+  <a href="https://example.com/maintenance-plans" target="_blank" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Maintenance Plans</h3><p>Browse available maintenance and support plans</p></div>
+  </a>
+  <a href="https://example.com/add-ons" target="_blank" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Add-ons</h3><p>Explore additional features and integrations</p></div>
+  </a>
+</div>`,
+
+accounts: `<div class="card-grid">
+  <a href="https://example.com/personal-profile" target="_blank" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Personal Profile</h3><p>Manage your personal information and preferences</p></div>
+  </a>
+  <a href="https://example.com/company-profile" target="_blank" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Company Profile</h3><p>View and update your company details</p></div>
+  </a>
+  <a href="https://example.com/customer-management" target="_blank" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Customer Management</h3><p>View and manage your onboarded customers</p></div>
+  </a>
+  <a href="https://example.com/analytics" target="_blank" style="text-decoration: none; color: inherit;">
+    <div class="card"><h3>Analytics</h3><p>View your sales performance and statistics</p></div>
+  </a>
+</div>`,
+
+      support: `
+<div class="card-grid" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; align-items: flex-start;">
+  <div class="card" style="flex: 1 1 500px; max-width: 500px; padding: 2rem; text-align: left;">
+    <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Support Request</h3>
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <input type="text" placeholder="Subject *" />
+      <select><option>Select category</option></select>
+      <select><option>Select priority</option></select>
+      <textarea rows="4" placeholder="Please describe your issue or question in detail"></textarea>
+      <button class="btn">Submit Request</button>
+    </div>
+  </div>
+  <div class="card" style="flex: 1 1 300px; max-width: 350px; padding: 2rem; text-align: left;">
+    <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Contact Information</h3>
+    <p style="margin-bottom: 0.75rem;"><strong>Support Hours</strong><br>Mon - Fri: 9 AM – 6 PM EST</p>
+    <p style="margin-bottom: 0.75rem;"><strong>Email:</strong> partners@nimbles2p.com</p>
+    <p style="margin-bottom: 0.75rem;"><strong>Phone:</strong> +1 (555) 123-4567</p>
+    <p><strong>Emergency:</strong> +1 (555) 987-6543</p>
+  </div>
+</div>`,
+
+policies: `
+  <ul style="max-width: 800px; margin: 0 auto; padding: 1rem 2rem; line-height: 1.8; font-size: 1rem; color: #374151;">
+    <li>All partners must complete onboarding and sign a Partner Agreement and NDA before accessing resources.</li>
+    <li>Deal registration via the Partner Portal is mandatory, with a 90-day exclusivity window upon approval.</li>
+    <li>Partners must comply with data privacy regulations and handle all shared data responsibly.</li>
+    <li>Legal and ethical conduct is mandatory; violations can result in termination.</li>
+    <li>Open communication with the partner success team is expected, with regular check-ins or reviews.</li>
+    <li>Branding, marketing, and use of assets require prior approval, and all materials must follow brand guidelines.</li>
+  </ul>`};
+
+    function showTab(tab) {
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      content.innerHTML = templates[tab];
+    }
+
+    content.innerHTML = templates.sales;
+
+    function toggleDropdown() {
+  const dropdown = document.getElementById("user-dropdown");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
+
+// Optional: Hide dropdown when clicking outside
+document.addEventListener("click", function (e) {
+  const dropdown = document.getElementById("user-dropdown");
+  if (!e.target.closest("#user-dropdown") && !e.target.closest("[onclick='toggleDropdown()']")) {
+    dropdown.style.display = "none";
+  }
+});
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NimbleS2P Partner Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f6f8;
+      color: #1f2937;
+    }
+    header {
+      background-color: #3b0a75;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+  
+    a.logout {
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    a.logout:hover {
+      opacity: 0.7;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #111827;
+    }
+
+    .table-box {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background-color: #f3f4f6;
+      font-weight: 600;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      color: #6b7280;
+    }
+
+    td {
+      vertical-align: top;
+    }
+
+    a.download-link {
+      color: #3b0a75;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a.download-link:hover {
+      text-decoration: underline;
+    }
+
+    .back-btn {
+  float: right;
+  padding: 0.6rem 1.2rem;
+  background-color: #3b0a75;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(59, 10, 117, 0.2);
+}
+
+.back-btn:hover {
+  background-color: #5e2ca5;
+  box-shadow: 0 4px 10px rgba(59, 10, 117, 0.25);
+}
+
+    .icon {
+      margin-right: 4px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>NimbleS2P Partner Portal</strong></div>
+    <div style="position: relative;">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <div style="
+          background-color: #5e2ca5;
+          padding: 0.4rem 1rem;
+          border-radius: 999px;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-weight: 600;
+          font-size: 0.95rem;
+          color: white;">
+          <span>👤</span>
+          <span>Partner ID: PARTNER123</span>
+        </div>
+        <span style="font-size: 1.2rem; cursor: pointer;" onclick="toggleDropdown()">👤</span>
+        <span style="font-size: 1.2rem; cursor: pointer;" onclick="toggleDropdown()">▾</span>
+      </div>
+    
+      <div id="user-dropdown" style="
+        display: none;
+        position: absolute;
+        right: 0;
+        margin-top: 0.5rem;
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        padding: 0.5rem 1rem;
+        z-index: 10;
+      ">
+        <a href="#" onclick="logout()" style="
+          text-decoration: none;
+          color: #3b0a75;
+          font-weight: 500;
+          display: block;
+          padding: 0.3rem 0;
+        ">Logout</a>
+      </div>
+    </div>
+    
+    
+  </header>
+  
+  <div class="container">
+    <h2>Mail Templates<a href="index.html" class="back-btn">Back to Main Menu</a></h2>
+
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr>
+            <th>Product Module</th>
+            <th>Document</th>
+            <th>Remarks</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td rowspan="2">Compliance Portal</td>
+              <td>Template 1</td>
+              <td>Standard compliance checklist</td>
+              <td><a href="#" class="download-link">⬇ Download</a></td>
+            </tr>
+            <tr>
+              <td>Template 2</td>
+              <td>Advanced regulatory template</td>
+              <td><a href="#" class="download-link">⬇ Download</a></td>
+            </tr>
+          
+            <tr>
+              <td rowspan="2">Vendor Due Diligence</td>
+              <td>Template 1</td>
+              <td>Initial screening format</td>
+              <td><a href="#" class="download-link">⬇ Download</a></td>
+            </tr>
+            <tr>
+              <td>Template 2</td>
+              <td>Risk scoring and approval matrix</td>
+              <td><a href="#" class="download-link">⬇ Download</a></td>
+            </tr>
+          
+            <tr>
+              <td rowspan="2">Supplier Portal</td>
+              <td>Template 1</td>
+              <td>Onboarding checklist</td>
+              <td><a href="#" class="download-link">⬇ Download</a></td>
+            </tr>
+            <tr>
+              <td>Template 2</td>
+              <td>Portal user access guide</td>
+              <td><a href="#" class="download-link">⬇ Download</a></td>
+            </tr>
+          
+            <tr>
+              <td rowspan="2">Invoice Processing Automation</td>
+              <td>Template 1</td>
+              <td>Automation workflow sample</td>
+              <td><a href="#" class="download-link">⬇ Download</a></td>
+            </tr>
+            <tr>
+              <td>Template 2</td>
+              <td>Exception handling rulebook</td>
+              <td><a href="#" class="download-link">⬇ Download</a></td>
+            </tr>
+          </tbody>          
+        
+        
+      </table>
+    </div>
+  </div>
+</body>
+</html>
+
+  <script>
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "https://www.nimbles2p.com";
+    }
+
+    function toggleDropdown() {
+  const dropdown = document.getElementById("user-dropdown");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
+
+// Optional: Hide dropdown when clicking outside
+document.addEventListener("click", function (e) {
+  const dropdown = document.getElementById("user-dropdown");
+  if (!e.target.closest("#user-dropdown") && !e.target.closest("[onclick='toggleDropdown()']")) {
+    dropdown.style.display = "none";
+  }
+});
+
+  </script>
+</body>
+</html>

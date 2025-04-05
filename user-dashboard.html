@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NimbleS2P Partner Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fafafa;
+      color: #1f2937;
+    }
+    header {
+      background-color: #3b0a75;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav {
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    nav button {
+      font-family: 'Poppins', sans-serif;
+      background: none;
+      border: none;
+      font-weight: 500;
+      padding: 0.6rem 1.5rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+    nav button.active,
+    nav button:hover {
+      background-color: #3b0a75;
+      color: white;
+      box-shadow: 0 3px 6px rgba(59, 10, 117, 0.25);
+    }
+    .tab-content {
+      display: none;
+      padding: 2rem;
+      font-size: 1rem;
+      color: #1f2937;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .card {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin: auto;
+      max-width: 1200px;
+    }
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .card p {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    th {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+    .badge {
+      padding: 0.3rem 0.6rem;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+      background-color: #f3f4f6;
+      color: #374151;
+    }
+
+    .search-bar {
+      max-width: 400px;
+      margin: 0 auto 1rem auto;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 0.6rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+    }
+    .btn {
+      background-color: #3b0a75;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn:hover { background-color: #57289e; }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>NimbleS2P Partner Portal</strong></div>
+    <div style="position: relative;">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <div style="background-color: #5e2ca5; padding: 0.4rem 1rem; border-radius: 999px; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; font-size: 0.95rem; color: white;">
+          <span>👤</span>
+          <span>User ID: USER123</span>
+        </div>
+        <span style="font-size: 1.2rem; cursor: pointer;" onclick="toggleDropdown()">👤</span>
+        <span style="font-size: 1.2rem; cursor: pointer;" onclick="toggleDropdown()">▾</span>
+      </div>
+      <div id="user-dropdown" style="display: none; position: absolute; right: 0; margin-top: 0.5rem; background-color: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 0.5rem 1rem; z-index: 10;">
+        <a href="logout.html" onclick="logout()" style="text-decoration: none; color: #3b0a75; font-weight: 500; display: block; padding: 0.3rem 0;">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <button class="active" onclick="switchTab(event, 'overview')">Partner Overview</button>
+    <button onclick="switchTab(event, 'onboarding')">Create Onboarding</button>
+    <button onclick="switchTab(event, 'directory')">Partner Directory</button>
+    <button onclick="switchTab(event, 'leads')">Lead Directory</button>
+    <button onclick="switchTab(event, 'support')">Support Ticket</button>
+  </nav>
+
+  <div id="overview" class="tab-content active">
+    <div class="card">
+      <h2>Top Performing Partners</h2>
+      <p>Partners with highest revenue generation</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Partner</th>
+            <th>Primary Contact</th>
+            <th>Region</th>
+            <th>Performance Score</th>
+            <th>Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>CloudSoft Technologies</strong></td><td>Michael Brown</td><td>North America</td><td><span class="bar score-94"></span> 94</td><td>$280,000</td></tr>
+          <tr><td><strong>Global Logistics Partners</strong></td><td>Maria Rodriguez</td><td>Europe</td><td><span class="bar score-92"></span> 92</td><td>$230,000</td></tr>
+          <tr><td><strong>Innovative Healthcare</strong></td><td>Emily Johnson</td><td>North America</td><td><span class="bar score-78"></span> 78</td><td>$175,000</td></tr>
+          <tr><td><strong>TechSolutions Inc.</strong></td><td>John Smith</td><td>North America</td><td><span class="bar score-87"></span> 87</td><td>$145,000</td></tr>
+          <tr><td><strong>Educational Resources Inc</strong></td><td>Jennifer Lee</td><td>Asia Pacific</td><td><span class="bar score-81"></span> 81</td><td>$120,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tab-content" id="onboarding">
+    <div class="card">
+      <h2>Create Partner User</h2>
+      <p>This form allows an admin to create a partner user and register them in the system.</p>
+      <form>
+        <div class="form-group">
+          <label for="username">Username *</label>
+          <input type="text" id="username" placeholder="Enter username" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" placeholder="Enter email address" required />
+        </div>
+        <div class="form-group">
+          <label for="firstname">First Name</label>
+          <input type="text" id="firstname" placeholder="Enter first name" />
+        </div>
+        <div class="form-group">
+          <label for="lastname">Last Name</label>
+          <input type="text" id="lastname" placeholder="Enter last name" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input type="password" id="password" placeholder="Enter password" required />
+        </div>
+        
+        <!-- New Partner Category Dropdown -->
+        <div class="form-group">
+          <label for="partner-category">Partner Category</label>
+          <select id="partner-category">
+            <option value="">Select Partner Category</option>
+            <option value="gold">Gold Partner</option>
+            <option value="silver">Silver Partner</option>
+            <option value="bronze">Bronze Partner</option>
+          </select>
+        </div>
+  
+        <button type="submit" class="btn">Create User</button>
+      </form>
+    </div>
+  </div>
+  
+
+  <div id="directory" class="tab-content">
+    <div class="card">
+      <h2>All Partners</h2>
+      <p>Manage and view all registered partners</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Partner Name</th>
+            <th>Primary Contact</th>
+            <th>Region</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>Onboarding Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>TechSolutions Inc.</td><td>John Smith</td><td>North America</td><td><span class="badge active">Active</span></td><td>Gold</td><td>2023-01-15</td></tr>
+          <tr><td>Global Logistics Partners</td><td>Maria Rodriguez</td><td>Europe</td><td><span class="badge active">Active</span></td><td>Silver</td><td>2023-02-22</td></tr>
+          <tr><td>EcoFriendly Solutions</td><td>David Chen</td><td>Asia Pacific</td><td><span class="badge inactive">Inactive</span></td><td>Bronze</td><td>2023-03-10</td></tr>
+          <tr><td>Innovative Healthcare</td><td>Emily Johnson</td><td>North America</td><td><span class="badge active">Active</span></td><td>Gold</td><td>2023-04-05</td></tr>
+          <tr><td>Financial Experts Ltd</td><td>Robert Williams</td><td>Europe</td><td><span class="badge pending">Pending</span></td><td>Silver</td><td>2023-04-18</td></tr>
+          <tr><td>Digital Marketing Pros</td><td>Sophia Garcia</td><td>South America</td><td><span class="badge suspended">Suspended</span></td><td>Bronze</td><td>2023-05-02</td></tr>
+          <tr><td>CloudSoft Technologies</td><td>Michael Brown</td><td>North America</td><td><span class="badge active">Active</span></td><td>Gold</td><td>2023-05-15</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+  <div id="leads" class="tab-content">
+    <div class="card">
+      <h2>Lead Directory</h2>
+      <p>Search and manage submitted leads</p>
+      <div class="search-bar">
+        <input type="text" id="leadSearchInput" placeholder="Search leads..." onkeyup="searchLeads()">
+      </div>
+      <table id="leadTable">
+        <thead>
+          <tr><th>Lead Name</th><th>Registered By</th><th>Region</th><th>Status</th><th>Days Left</th><th>Date Submitted</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Acme Corp</td><td>John Smith</td><td>North America</td><td><span class="badge active">In Review</span></td><td>28 days</td><td>2025-03-01</td></tr>
+          <tr><td>GreenEco Ltd</td><td>Maria Rodriguez</td><td>Europe</td><td><span class="badge pending">Follow Up</span></td><td>12 days</td><td>2025-03-17</td></tr>
+          <tr><td>NovaTek</td><td>Emily Johnson</td><td>Asia Pacific</td><td><span class="badge active">Approved</span></td><td>5 days</td><td>2025-03-25</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tab-content" id="support">
+    <div class="card">
+      <h2>Support Tickets</h2>
+      <p>Manage and respond to partner support requests</p>
+      <div class="search-bar">
+        <input type="text" id="ticketSearchInput" placeholder="Search tickets..." onkeyup="searchTickets()">
+      </div>
+      <table id="supportTable">
+        <thead>
+          <tr>
+            <th>Ticket ID</th>
+            <th>Subject</th>
+            <th>Partner</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Created</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>t001</td><td>API integration issues</td><td>TechSolutions Inc.</td><td><span class="badge">Open</span></td><td><span class="badge">High</span></td><td>08/06/2023</td><td>Actions</td></tr>
+          <tr><td>t002</td><td>Billing discrepancy</td><td>Global Logistics Partners</td><td><span class="badge">Pending</span></td><td><span class="badge">Medium</span></td><td>07/06/2023</td><td>Actions</td></tr>
+          <tr><td>t003</td><td>Login authentication error</td><td>Innovative Healthcare</td><td><span class="badge">Resolved</span></td><td><span class="badge">High</span></td><td>05/06/2023</td><td>Actions</td></tr>
+          <tr><td>t004</td><td>Data export functionality</td><td>CloudSoft Technologies</td><td><span class="badge">Open</span></td><td><span class="badge">Low</span></td><td>10/06/2023</td><td>Actions</td></tr>
+          <tr><td>t005</td><td>Dashboard metrics not updating</td><td>Educational Resources Inc</td><td><span class="badge">Open</span></td><td><span class="badge">Critical</span></td><td>11/06/2023</td><td>Actions</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "https://www.nimbles2p.com";
+    }
+
+    function toggleDropdown() {
+      const dropdown = document.getElementById("user-dropdown");
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+
+    document.addEventListener("click", function (e) {
+      const dropdown = document.getElementById("user-dropdown");
+      if (!e.target.closest("#user-dropdown") && !e.target.closest("[onclick='toggleDropdown()']")) {
+        dropdown.style.display = "none";
+      }
+    });
+
+    function searchLeads() {
+      const input = document.getElementById("leadSearchInput").value.toLowerCase();
+      const rows = document.querySelectorAll("#leadTable tbody tr");
+      rows.forEach(row => {
+        const leadName = row.children[0].textContent.toLowerCase();
+        row.style.display = leadName.includes(input) ? "" : "none";
+      });
+    }
+
+    function searchTickets() {
+      const input = document.getElementById("ticketSearchInput").value.toLowerCase();
+      const rows = document.querySelectorAll("#supportTable tbody tr");
+      rows.forEach(row => {
+        const subject = row.children[1].textContent.toLowerCase();
+        const partner = row.children[2].textContent.toLowerCase();
+        row.style.display = subject.includes(input) || partner.includes(input) ? "" : "none";
+      });
+    }
+
+    function switchTab(event, tabId) {
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>

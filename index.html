@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NimbleS2P Partners</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --brand-color: #6a1b9a;
+      --text-light: #fff;
+      --text-subtle: #ffffffcc;
+      --bg-light: #f9f9f9;
+      --shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+/* Watermark */
+    .watermark-container {
+  position: relative;
+}
+
+.watermark-bottom-left-1 {
+  position: absolute;
+  top: -170px; /* adjust as needed */
+  right: 30px;   /* adjust as needed */
+  opacity: 0.3;
+  height: 300px; /* or width, depending on your image */
+  pointer-events: none; /* so it doesn’t block clicks */
+  z-index: 0;
+}
+
+.watermark-bottom-left-2 {
+  position: absolute;
+  top: -100px; /* adjust as needed */
+  left: 30px;   /* adjust as needed */
+  opacity: 0.3;
+  height: 300px; /* or width, depending on your image */
+  pointer-events: none; /* so it doesn’t block clicks */
+  z-index: 0;
+}
+
+.watermark-bottom-left-3 {
+  position: absolute;
+  top: -100px; /* adjust as needed */
+  left: 30px;   /* adjust as needed */
+  opacity: 0.3;
+  height: 200px; /* or width, depending on your image */
+  pointer-events: none; /* so it doesn’t block clicks */
+  z-index: 0;
+}
+
+/* Footer */
+
+    .footer {
+  background-color: #11141d;
+  color: #ccc;
+  font-family: 'Poppins', sans-serif;
+  padding: 60px 10% 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  border-bottom: 1px solid #2a2f3b;
+  padding-bottom: 40px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.footer-column p {
+  font-size: 0.95rem;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 12px;
+  font-size: 1.2rem;
+  background-color: #2c2f3a;
+  padding: 10px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: #6a1b9a;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 25px;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+    .common-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+    .sales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.partner-card-v2 {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.partner-card-v2:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.partner-card-v2 img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.partner-card-body {
+  padding: 20px;
+}
+
+.partner-card-body h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.partner-card-body p {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0;
+}
+
+.partner-card-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--brand-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.sales-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: left;
+  border: 1px solid #eee;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sales-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.sales-card .icon {
+  font-size: 28px;
+  color: var(--brand-color);
+  margin-bottom: 15px;
+}
+
+.sales-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.sales-card p {
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0;
+}
+
+.sales-button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 12px 22px;
+  border: 2px solid var(--brand-color);
+  background-color: transparent;
+  color: var(--brand-color);
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sales-button:hover {
+  background-color: var(--brand-color);
+  color: white;
+}
+
+.top-nav {
+      background-color: #ffffff; /* Clean white background */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Soft bottom shadow */
+    }
+
+    .top-nav img {
+      height: 45px;
+    }
+
+    .nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-left a,
+.nav-right a {
+  color: #333;
+  text-decoration: none;
+  padding: 6px 10px;
+  font-weight: 200;
+  transition: color 0.3s ease;
+}
+
+.nav-right .login-btn {
+  padding: 8px 16px;
+  background-color: #6a1b9a;
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-right .login-btn:hover {
+  background-color: #4a148c;
+}
+
+.nav-right a:hover,
+.nav-left a:hover {
+  color: #6a1b9a;
+}
+
+.carousel-section {
+  background: linear-gradient(to bottom, #391085, #8e24aa);
+    padding: 80px 0;
+  }
+
+  .carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #1e1e1e
+}
+
+.carousel-container p.subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 50px;
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 60px 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Slide 1 - White */
+.slide-white {
+  background-color: #ffffff;
+  border: 1px solid #8e24aa;
+  box-shadow: 0 4px 20px rgba(142, 36, 170, 0.15);
+}
+
+.slide-white h3 {
+  color: #391085;
+}
+
+.slide-white p {
+  color: #333;
+}
+
+.slide-white a {
+  color: #8e24aa;
+  border-bottom: 2px solid #8e24aa;
+}
+
+/* Slide 2 - Mid Purple */
+.slide-mid-purple {
+  background-color: #8e24aa;
+  color: #fff;
+}
+
+.slide-mid-purple h3,
+.slide-mid-purple p,
+.slide-mid-purple a {
+  color: #fff;
+}
+
+.slide-mid-purple p {
+  color: #f5e4fb;
+}
+
+.slide-mid-purple a {
+  border-bottom: 2px solid #fff;
+}
+
+/* Slide 3 - Deep Purple */
+.slide-deep-purple {
+  background-color: #391085;
+  color: #fff;
+}
+
+.slide-deep-purple h3,
+.slide-deep-purple p,
+.slide-deep-purple a {
+  color: #fff;
+}
+
+.slide-deep-purple p {
+  color: #e0d0ff;
+}
+
+.slide-deep-purple a {
+  border-bottom: 2px solid #fff;
+}
+
+/* Link common */
+.carousel-slide a {
+  margin-top: 24px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.carousel-slide a:hover {
+  opacity: 0.85;
+}
+
+/* Carousel buttons */
+.carousel-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.carousel-buttons button {
+  background-color: #fff;
+  border: 2px solid #8e24aa;
+  color: #8e24aa;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-buttons button:hover {
+  background-color: #CBC3E3 ;
+  color: #fff;
+  border-color: #8e24aa;
+}
+
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+
+
+.carousel-slide {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  padding: 60px 40px;
+  max-width: 100%;
+  margin: 0;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+  .carousel-slide h3 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: #1e1e1e;
+  }
+
+  .carousel-slide p {
+    font-size: 1.2rem;
+    color: #444;
+    max-width: 800px;
+    line-height: 1.6;
+  }
+
+  .carousel-slide a {
+    margin-top: 24px;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #5e2ca5;
+    text-decoration: none;
+    border-bottom: 2px solid #5e2ca5;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-slide a:hover {
+    opacity: 0.85;
+  }
+
+  .carousel-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .carousel-buttons button {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    color: #5e2ca5;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-buttons button:hover {
+    background-color: #5e2ca5;
+    color: #fff;
+    border-color: #5e2ca5;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-slide {
+      padding: 40px 20px;
+    }
+
+    .carousel-slide h3 {
+      font-size: 1.5rem;
+    }
+
+    .carousel-slide p {
+      font-size: 1rem;
+    }
+  }
+
+  /* last section carousel font above */
+
+    .hero {
+      background: linear-gradient(to bottom, #391085, #8e24aa);
+      color: var(--text-light);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 10%;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 280px;
+      max-width: 50%;
+    }
+
+    .hero-text h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.2em;
+      margin-bottom: 25px;
+      color: var(--text-subtle);
+    }
+
+    .hero-text a {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 14px 28px;
+      background-color: #fff;
+      color: var(--brand-color);
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1em;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-text a:hover {
+      background-color: #e0e0e0;
+    }
+
+    .hero-img {
+      flex: 1;
+      text-align: right;
+    }
+
+    .hero-img img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    section {
+      scroll-margin-top: 100px;
+      padding: 80px 10%;
+      border-bottom: 1px solid #eee;
+    }
+
+    h2 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    .button-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: var(--brand-color);
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    .button-link:hover {
+      background-color: #4a148c;
+    }
+
+    .image-stack {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+}
+
+.image-stack img {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.image-stack img:nth-child(1) {
+  top: 0;
+  right: 0;
+  transform: rotate(-5deg);
+  z-index: 3;
+}
+
+.image-stack img:nth-child(2) {
+  top: 40px;
+  left: 400px;
+  transform: rotate(4deg);
+  z-index: 2;
+}
+
+.image-stack img:nth-child(3) {
+  top: 80px;
+  left: 600px;
+  transform: rotate(-2deg);
+  z-index: 1;
+}
+
+
+    .partner-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .partner-card {
+      flex: 1 1 calc(50% - 30px);
+      background: var(--bg-light);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-5px);
+    }
+
+    
+
+
+    .contact-banner {
+      background-color: #eee;
+      padding: 60px 10%;
+      text-align: center;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .contact-banner a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 28px;
+      background-color: var(--brand-color);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+    }
+
+    .sticky-tools {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 999;
+}
+
+.tool-btn {
+  background-color: #6a1b9a;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tool-btn:hover {
+  background-color: #4a148c;
+  transform: translateY(-2px);
+}
+
+.contact-form-section {
+  padding: 80px 10%;
+  background-color: #f7f8fa;
+  color: #333;
+  text-align: center;
+}
+
+.contact-form-section h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #2a003f;
+}
+
+.contact-form-section p {
+  font-size: 1.1rem;
+  color: #4a4a4a;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.contact-form {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #333;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #d1b3ff;
+  box-shadow: 0 0 0 3px rgba(209, 179, 255, 0.2);
+}
+
+.contact-form textarea {
+  height: 130px;
+  resize: vertical;
+  margin-bottom: 30px;
+}
+
+.submit-btn {
+  width: 50%;
+  background-color: #6a1b9a;
+  color: #ffffff;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-btn:hover {
+  background-color: #4a148c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+  }
+}
+
+.why-partner-section {
+      padding: 80px 10%;
+      background-color: #f7f8fa;
+      text-align: center;
+    }
+
+    .why-partner-section h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #1e1e1e;
+      margin-bottom: 20px;
+    }
+
+    .why-partner-section p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto 60px auto;
+    }
+
+    .benefit-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .benefit-card {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: left;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .benefit-icon {
+      background-color: #f1e7f9;
+      padding: 14px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #6a1b9a;
+    }
+
+    .benefit-text h4 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .benefit-text p {
+      font-size: 1rem;
+      color: #444;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .benefit-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .who-partner-section {
+      padding: 80px 10%;
+      background-color: #fff;
+    }
+
+    .who-partner-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .who-partner-header h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #1e1e1e;
+      margin-bottom: 12px;
+    }
+
+    .who-partner-header p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .who-partner-content {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .accordion-stack {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 280px;
+      max-width: 700px; /* 👈 Add this to control width */
+      margin: 0;   /* 👈 Center the accordion block */
+}
+
+    .accordion-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    .accordion-title {
+
+      background-color: white;
+      border-radius: 8px;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between; /* Keeps arrow on the right */
+      align-items: center;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* 👈 Subtle shadow */
+      transition: all 0.3s ease;
+}
+
+.accordion-title:hover {
+  background-color: #f1f1f1;
+}
+
+.accordion-arrow {
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.accordion-title.active .accordion-arrow {
+  transform: rotate(90deg); /* 👈 Rotates arrow when open */
+}
+
+    .accordion-title .icon {
+      margin-right: 12px;
+      font-size: 1.2rem;
+      color: #6a1b9a;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 20px;
+      transition: max-height 0.3s ease;
+    }
+
+    .accordion-content p {
+      font-size: 0.95rem;
+      color: #444;
+      margin: 16px 0;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 200px; /* enough space for text */
+    }
+
+    .illustration-image {
+  flex-shrink: 0; /* prevents the image from shrinking */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* aligns top with accordion */
+  max-width: 500px;
+}
+
+.illustration-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+    @media (max-width: 1024px) {
+      .who-partner-content {
+        flex-direction: column;
+      }
+
+
+
+
+  </style>
+</head>
+<body>
+
+  
+  <div class="top-nav">
+    <div class="nav-left">
+      <img src="https://nimbles2p.com/wp-content/uploads/2025/02/Nimble_Color_Large.png" alt="NimbleS2P Logo" style="height: 40px;">
+      <a href="#partner-categories">Categories</a>
+      <a href="#sales-resources">Resources</a>
+      <a href="https://nimbles2p.com/" class="explore">Explore NimbleS2P</a>
+  
+    </div>
+    <div class="nav-right">
+      <a href="#partner-registration">Join Us</a>
+      <a href="login.html" class="login-btn">Login</a>
+    </div>
+  </div>
+  
+  
+
+  <div class="hero">
+  <div class="hero-text">
+    <h1>Let’s Grow Together.</h1>
+    <p>Join forces to take NimbleS2P global; driving faster adoption, better outcomes, and bigger wins for all.</p>
+    <a href="#partner-registration">Register as a Partner</a>
+  </div>
+  <div class="hero-img">
+    <div class="image-stack">
+      <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1">
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2047&auto=format&fit=crop" alt="Image 2">
+      <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=2047&auto=format&fit=crop" alt="Image 3">
+    </div>
+  </div>
+</div>
+
+
+  <section class="who-partner-section">
+    <div class="who-partner-header">
+      <h2>Who can be a partner?</h2>
+      <p>If you're thinking ahead, you're thinking like us. We, at NimbleS2P, invites forward thinking organizations to shape the future of supplier automation</p>
+    </div>
+
+    <div class="who-partner-content">
+      <div class="accordion-stack">
+
+        <div class="accordion-item">
+          <div class="accordion-title">
+            <span><img src="https://cdn-icons-png.flaticon.com/128/2904/2904602.png" width="20" style="margin-right: 12px; vertical-align: middle;"> Fintech Players</span>
+            <span class="accordion-arrow">›</span>
+          </div>
+          <div class="accordion-content">
+            <p>Helping enterprises streamline payments, credit, and financial workflows? Let’s amplify that impact together.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-title">
+            <span><img src="https://cdn-icons-png.flaticon.com/128/2904/2904602.png" width="20" style="margin-right: 12px; vertical-align: middle;"> Finance Consultants</span>
+            <span class="accordion-arrow">›</span>
+          </div>
+          <div class="accordion-content">
+            <p>Advising clients on financial efficiency or compliance? NimbleS2P adds automation to your toolkit.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-title">
+            <span><img src="https://cdn-icons-png.flaticon.com/128/2904/2904602.png" width="20" style="margin-right: 12px; vertical-align: middle;"> IT Services</span>
+            <span class="accordion-arrow">›</span>
+          </div>
+          <div class="accordion-content">
+            <p>Building enterprise solutions, integrations, or digital workflows? Plug into NimbleS2P—a platform built for scale, speed, and seamless collaboration with enterprise systems.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-title">
+            <span><img src="https://cdn-icons-png.flaticon.com/128/2904/2904602.png" width="20" style="margin-right: 12px; vertical-align: middle;"> CA Firms</span>
+            <span class="accordion-arrow">›</span>
+          </div>
+          <div class="accordion-content">
+            <p>From tax to audit to vendor validation—your expertise, powered by NimbleS2P’s automation, delivers unmatched value.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="illustration-image">
+        <img src="https://nimbles2p.com/wp-content/uploads/2025/04/cool-business-people_05.png" alt="Partner Illustration">
+      </div>
+
+      <div class="watermark-container">
+          <img src="https://nimbles2p.com/wp-content/uploads/2025/04/Nimble_Symbol.svg" class="watermark-bottom-left-1">
+          </div>
+    </div>
+  </section>
+
+  <section class="why-partner-section">
+    <h2>Why work as a NimbleS2P Partner?</h2>
+    <p>NimbleS2P and its Partners collaborate to deliver comprehensive procurement solutions that help organizations of all sizes optimize their supply chain operations.</p>
+
+    <div class="benefit-cards">
+      <div class="benefit-card">
+        <div class="benefit-icon">📈</div>
+        <div class="benefit-text">
+          <h4>Expand your revenue</h4>
+          <p>Generate new revenue streams by offering NimbleS2P's procurement solutions to your existing clients and new prospects.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🎓</div>
+        <div class="benefit-text">
+          <h4>Access expert support</h4>
+          <p>Receive comprehensive training, marketing materials, and technical support from our dedicated partner enablement team.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">👥</div>
+        <div class="benefit-text">
+          <h4>Grow your network</h4>
+          <p>Connect with a global community of technology and implementation partners in the procurement and supply chain space.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">🌐</div>
+        <div class="benefit-text">
+          <h4>Leverage local expertise</h4>
+          <p>Combine your regional market knowledge with NimbleS2P’s global procurement solutions to deliver localized value.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="partner-categories">
+    <div class="watermark-container">
+          <img src="https://nimbles2p.com/wp-content/uploads/2025/04/Nimble_Symbol.svg" class="watermark-bottom-left-3">
+          </div>
+    <h2 style="text-align: center;">Lead your own way to the market</h2>
+    <p style="text-align: center;">Partners can join up to four program modules—your choice, your path.</p>
+  
+    <div class="partner-grid">
+  
+      <a href="#" class="partner-card-v2">
+        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Referral Partner">
+        <div class="partner-card-body">
+          <h3>Referral Partner</h3>
+          <p>Refer NimbleS2P and earn commissions with minimal involvement.</p>
+        </div>
+        <div class="partner-card-footer">→ Learn More</div>
+      </a>
+  
+      <a href="#" class="partner-card-v2">
+        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Reseller">
+        <div class="partner-card-body">
+          <h3>Reseller / VAR</h3>
+          <p>Resell NimbleS2P as part of your product & service portfolio.</p>
+        </div>
+        <div class="partner-card-footer">→ Learn More</div>
+      </a>
+  
+      <a href="#" class="partner-card-v2">
+        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Implementation Consultant">
+        <div class="partner-card-body">
+          <h3>Implementation Consultant</h3>
+          <p>Support customer onboarding and configuration of NimbleS2P.</p>
+        </div>
+        <div class="partner-card-footer">→ Learn More</div>
+      </a>
+  
+      <a href="#" class="partner-card-v2">
+        <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="System Integrator">
+        <div class="partner-card-body">
+          <h3>System Integrator</h3>
+          <p>Deliver end-to-end digital transformation powered by NimbleS2P.</p>
+        </div>
+        <div class="partner-card-footer">→ Learn More</div>
+      </a>
+  
+    </div>
+  </section>  
+  
+  <section class="carousel-section">
+        <div class="carousel-container">
+          <h2 style="text-align: center; font-size: 2rem; margin-bottom: 20px; color: white;">Powering the Future of Supplier Automation</h2>
+          <p style="text-align: center; font-size: 1.1rem; color: white; margin-bottom: 50px;">From proven traction to bold ambitions, we’re scaling new heights! Some are watching, while others are shaping it with us.</p>
+      
+          <div class="carousel-wrapper" style="overflow: hidden; position: relative;">
+            <div class="carousel-track" id="carouselTrack" style="display: flex; transition: transform 0.6s ease-in-out;">
+              <div class="carousel-slide" style="flex: 0 0 100%; width: 100%; box-sizing: border-box; padding: 60px 40px; background-color: #ffffff; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                <h3>Enterprise-grade Procurement</h3>
+                <p>"<span style="color:#1e1e1e; font-weight:500;">NimbleS2P helped us</span> implement compliant procurement processes with automated verification and certification tracking, <span style="color:#5e2ca5;">reducing our compliance risk by 85%.</span>"</p>
+                <a href="#">Read Case Study →</a>
+              </div>
+              <div class="carousel-slide" style="flex: 0 0 100%; width: 100%; box-sizing: border-box; padding: 60px 40px; background-color: #ffffff; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                <h3>Transforming Procurement</h3>
+                <p>End-to-end automation with <span style="color:#5e2ca5; font-weight:600;">AI-powered insights</span>, automated approvals, and seamless financial integrations.</p>
+                <a href="#">▶ Play Video</a>
+              </div>
+              <div class="carousel-slide" style="flex: 0 0 100%; width: 100%; box-sizing: border-box; padding: 60px 40px; background-color: #ffffff; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                <h3>96% Customer Satisfaction</h3>
+                <p>Customers consistently rate us as a <span style="color:#1e1e1e; font-weight:500;">top procurement solution</span> with unmatched implementation success and enterprise-grade support.</p>
+                <a href="#">Read Case Study →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-buttons" style="display: flex; justify-content: center; gap: 20px; margin-top: 40px;">
+            <button onclick="prevSlide()">←</button>
+            <button onclick="nextSlide()">→</button>
+          </div>
+        </div>
+      </section>
+
+
+
+  <section id="sales-resources">
+    <h2 style="text-align: center;">Gear up for growth</h2>
+    <p style="text-align: center;">Access product decks, case studies, one-pagers, and demo videos to help you sell better.</p>
+  
+    <div class="sales-grid">
+      <div class="sales-card">
+        <div class="icon">📄</div>
+        <h3>Product Presentations</h3>
+        <p>Slide decks that showcase NimbleS2P’s features and benefits.</p>
+      </div>
+      <div class="sales-card">
+        <div class="icon">🎥</div>
+        <h3>Demo Videos</h3>
+        <p>Walkthrough videos of key product capabilities.</p>
+      </div>
+      <div class="sales-card">
+        <div class="icon">📊</div>
+        <h3>Case Studies</h3>
+        <p>Success stories from enterprise customers.</p>
+      </div>
+      <div class="sales-card">
+        <div class="icon">📰</div>
+        <h3>One-Pagers</h3>
+        <p>Quick solution overview documents to share with prospects.</p>
+      </div>
+    </div>
+  
+    <div style="text-align: center;">
+      <a class="sales-button" href="login.html">Log in to access resources</a>
+    </div>
+  </section>  
+
+
+  <section id="partner-registration" class="contact-form-section">
+    <div class="watermark-container">
+          <img src="https://nimbles2p.com/wp-content/uploads/2025/04/Nimble_Symbol.svg" class="watermark-bottom-left-2">
+          </div>
+          <h2>Let’s Join Forces</h2>
+    <p>Explore how NimbleS2P can integrate with your enterprise stack or how you can become a valued partner.</p>
+  
+    <form class="contact-form">
+      <div class="form-grid">
+        <input type="text" placeholder="First Name*" required />
+        <input type="text" placeholder="Last Name*" required />
+        <input type="email" placeholder="Work Email*" required />
+        <input type="tel" placeholder="Work Phone*" required />
+        <input type="text" placeholder="Company Name*" required />
+        <select required>
+          <option value="">Industry*</option>
+          <option value="IT">IT</option>
+          <option value="Finance">Finance</option>
+          <option value="Manufacturing">Manufacturing</option>
+        </select>
+        <select required>
+          <option value="">Number of Employees*</option>
+          <option value="1-50">1–50</option>
+          <option value="51-200">51–200</option>
+          <option value="201+">201+</option>
+        </select>
+        <select required>
+          <option value="">Country/Region*</option>
+          <option value="India">India</option>
+          <option value="US">United States</option>
+          <option value="UK">United Kingdom</option>
+        </select>
+      </div>
+  
+      <textarea placeholder="Message*" required></textarea>
+  
+      <div class="button-wrapper">
+  <button type="submit" class="submit-btn">🚀 Submit & Connect</button>
+</div>
+
+    </form>
+  </section>
+     
+  <div class="sticky-tools">
+    <a href="#partner-registration" class="tool-btn">
+      🤝🏻&nbsp;&nbsp;Register as a partner
+    </a>
+  </div>  
+
+  <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <img src="https://nimbles2p.com/wp-content/uploads/2025/02/Nimble_White_Large-1.png" alt="NimbleS2P Logo" style="height: 40px; margin-bottom: 10px;">
+      <p>Connect, Automate, & Maximize supplier transactions​<br>in a smart and strategic manner!​</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Website">🔗</a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Partner Program</h4>
+      <ul>
+        <li><a href="#">Partner Types</a></li>
+        <li><a href="#">Sales Resources</a></li>
+        <li><a href="#">Partner Portal</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Others</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 NimbleS2P. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script>
+        const track = document.getElementById('carouselTrack');
+        const slides = document.querySelectorAll('.carousel-slide');
+        let currentIndex = 0;
+      
+        function updateSlidePosition() {
+          const slideWidth = slides[0].getBoundingClientRect().width;
+          track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+        }
+      
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateSlidePosition();
+        }
+      
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          updateSlidePosition();
+        }
+      
+        window.addEventListener('resize', updateSlidePosition);
+
+        document.querySelectorAll('.accordion-title').forEach(title => {
+      title.addEventListener('click', () => {
+        const parent = title.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+
+      </script>
+</body>
+</html>
