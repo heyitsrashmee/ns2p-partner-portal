@@ -277,7 +277,7 @@
         <div class="bottom-link">
           Not a partner yet? <a href="index.html#partner-registration">Apply to our partner program</a>
         </div>
-      </form>  
+      </form>      
     </div>
   </section>
 
@@ -299,8 +299,8 @@
       const form = document.querySelector('form');
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
   
         if (username === 'demo@partner.com' && password === 'demo123') {
           // Redirect to dashboard
